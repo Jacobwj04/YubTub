@@ -64,6 +64,7 @@ class Renderer {
 }
 
 class Yubtub {
+    main;
     aside;
     renderer;
     app;
@@ -71,9 +72,38 @@ class Yubtub {
     constructor(app, data) {
         this.app = app;
         this.renderer = new Renderer();
+        this.main = new Main(this, data);
         this.aside = new Aside(this, data);
 
     }
+
+}
+
+class Main {
+    video;
+
+    constructor(yubtub, data) {
+        this.yubtub = yubtub;
+        this.data = data;
+
+        this.htmlElement = document.createElement("main");
+        this.htmlElement.classList.add("main");
+
+        this.yubtub.renderer.render(document.querySelector("body"), this.htmlElement);
+
+        this.video = new Video();
+    }
+}
+
+class Video {
+
+}
+
+class Comments {
+
+}
+
+class Comment {
 
 }
 

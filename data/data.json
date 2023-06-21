@@ -2,19 +2,23 @@
     "data": [
         {
             "id": 0,
-            "video": "video1.mp4"
+            "video": "video1.mp4",
+            "link": 1
         },
         {
             "id": 1,
-            "video": "video2.mp4"
+            "video": "video2.mp4",
+            "link": 1
         },
         {
             "id": 2,
-            "video": "video3.mp4"
+            "video": "video3.mp4",
+            "link": 1
         },
         {
             "id": 3,
-            "video": "video4.mp4"
+            "video": "video4.mp4",
+            "link": 1
         }
     ]
 }
