@@ -89,17 +89,8 @@ class Aside {
         this.htmlElement = document.createElement("aside");
         this.htmlElement.classList.add("featured");
 
-        this.list = document.createElement("ul");
-        this.list.classList.add("featured__list");
-
-        this.listItem = document.createElement("li");
-        this.listItem.classList.add("featured__feature");
-
         this.yubtub.renderer.render(document.querySelector("body"), this.htmlElement);
-        this.yubtub.renderer.render(this.htmlElement, this.list);
-        this.yubtub.renderer.render(this.list, this.listItem);
         this.nextVideo = new NextVideo(this, this.data);
-        this.yubtub.renderer.render(this.listItem, this.nextVideo.htmlElement);
     }
 }
 
@@ -110,10 +101,17 @@ class NextVideo {
     constructor(aside, data) {
         this.aside = aside;
         this.data = data;
-        this.htmlElement = document.createElement("video");
-        this.htmlElement.classList.add("featured__video");
-        this.htmlElement.src = "./video/" + data[0].video;
-        this.htmlElement.onclick = this.videoClicked;
+        this.makeVideos(this.data)
+    }
+
+    makeVideos(data) {
+        for (let i = 0; i < this.data.length; i++) {
+            this.htmlElement = document.createElement("video");
+            this.htmlElement.classList.add("featured__video");
+            this.htmlElement.src = "./video/" + data[i].video;
+            this.htmlElement.onclick = this.videoClicked;
+            this.aside.yubtub.renderer.render(this.aside.htmlElement, this.htmlElement);
+        }
     }
 
     videoClicked = () => {

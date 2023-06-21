@@ -24,21 +24,12 @@ html {
   background: red;
   width: 30%;
   height: 100vh;
-}
-.featured__list {
-  width: 100%;
-  height: 100%;
-  padding: 1rem;
-  background: green;
-}
-.featured__feature {
-  width: 100%;
-  height: 30rem;
+  padding: 2rem;
 }
 .featured__video {
   object-fit: cover;
   width: 100%;
-  height: 100%;
+  height: 20rem;
 }
 
 .video {
