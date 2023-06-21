@@ -1,0 +1,65 @@
+.video {
+    height: 60rem;
+    width: 70%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    &__video {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__star {
+        font-size: 300%;
+
+        &--top {
+            position: absolute;
+            top: -3%;
+            left: -3%;
+            color: red;
+        }
+    }
+
+    &__infoBoxs {
+        list-style: none;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 10rem;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    &__infoBox {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        background: red;
+        padding: 0 2rem;
+        gap: 2rem;
+
+        &--second {
+            justify-content: flex-end;
+        }
+    }
+
+    &__profile {
+        width: 6rem;
+        height: 6rem;
+        background: white;
+        border-radius: 50%;
+        border: 0.2rem solid black;
+    }
+
+    &__title {
+        font-size: 100%;
+    }
+
+    &__arrow {
+        font-size: 300%;
+    }
+}
