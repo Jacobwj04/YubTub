@@ -3,22 +3,35 @@
         {
             "id": 0,
             "video": "video1.mp4",
-            "link": 1
+            "link": 1,
+            "comment": [
+                "Leuke video",
+                "Leuke video"
+            ]
         },
         {
             "id": 1,
             "video": "video2.mp4",
-            "link": 1
+            "link": 1,
+            "comment": [
+                "Leuke video"
+            ]
         },
         {
             "id": 2,
             "video": "video3.mp4",
-            "link": 1
+            "link": 1,
+            "comment": [
+                "Leuke video"
+            ]
         },
         {
             "id": 3,
             "video": "video4.mp4",
-            "link": 1
+            "link": 1,
+            "comment": [
+                "Leuke video"
+            ]
         }
     ]
 }

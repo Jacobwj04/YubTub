@@ -24,7 +24,7 @@ class App {
 
     constructor() {
         this.api = new Api("./data/data.json");
-        this.api.getData().then(result => {
+        this.api.getData().then(() => {
             this.switcher = new Switcher(this, this.api.data);
         });
     }
@@ -76,15 +76,18 @@ class Yubtub {
         this.aside = new Aside(this, data);
 
     }
-
 }
 
 class Main {
     video;
+    comments;
 
     constructor(yubtub, dataOnload) {
         this.yubtub = yubtub;
         this.dataOnload = dataOnload;
+
+        this.header = new Header();
+        this.yubtub.renderer.render(document.querySelector("body"), this.header.htmlElement);
 
         this.htmlElement = document.createElement("main");
         this.htmlElement.classList.add("main");
@@ -137,9 +140,26 @@ class Main {
 
         this.yubtub.renderer.render(this.infoboxSecond, this.arrow);
 
-        this.video = new Video(dataOnload);
-
+        this.video = new Video(this.dataOnload);
         this.yubtub.renderer.render(this.videoSection, this.video.htmlElement);
+
+        this.comments = new Comments(this.dataOnload, this);
+        this.yubtub.renderer.render(this.htmlElement, this.comments.htmlElement);
+    }
+}
+
+class Header {
+    htmlElement;
+
+    constructor() {
+        this.htmlElement = document.createElement("header");
+        this.htmlElement.classList = "header";
+
+        this.icon = document.createElement("icon");
+        this.icon.classList = "header__icon";
+
+        this.text = document.createElement("h1");
+        this.text.classList = "header__text";
     }
 }
 
@@ -156,11 +176,77 @@ class Video {
 }
 
 class Comments {
+    dataOnload;
+    comment;
+    main;
 
+    constructor(dataOnload, main) {
+        this.dataOnload = dataOnload;
+        this.main = main;
+
+        this.htmlElement = document.createElement("ul")
+        this.htmlElement.classList = "comments";
+
+        this.comment = new Comment(this.dataOnload, this.main, this);
+    }
 }
 
 class Comment {
+    dataOnload;
+    main;
+    comments
 
+    constructor(dataOnload, main, comments) {
+        this.dataOnload = dataOnload;
+        this.main = main;
+        this.comments = comments;
+        this.commentArray = [];
+        for (let i = 0; i < this.dataOnload.comment.length; i++) {
+            this.commentArray.push(this.dataOnload.comment[i]);
+        }
+        console.log(this.commentArray);
+
+        this.renderComments(this.commentArray);
+        this.renderInput();
+    }
+
+    renderComments(data) {
+        this.comments.htmlElement.innerHTML = "";
+        for (let i = 0; i < data.length; i++) {
+            this.htmlElement = document.createElement("li");
+            this.htmlElement.classList = "comments__comment";
+
+            this.figure = document.createElement("figure");
+            this.figure.classList = "comments__figure";
+
+            this.text = document.createElement("h3");
+            this.text.classList = "comments__text";
+            this.text.innerText = data[i];
+
+            this.main.yubtub.renderer.render(this.comments.htmlElement, this.htmlElement);
+            this.main.yubtub.renderer.render(this.htmlElement, this.figure);
+            this.main.yubtub.renderer.render(this.htmlElement, this.text);
+        }
+    }
+
+    renderInput() {
+        this.comment = document.createElement("li");
+        this.comment.classList = "comments__commentInput";
+
+        this.textarea = document.createElement("textarea");
+        this.textarea.classList = "comments__textarea";
+        this.textarea.placeholder = "Jouw Comment";
+        this.comment.addEventListener("keyup", (e) => {
+            if (e.code === "Enter") {
+                this.commentArray.push(this.textarea.value);
+                this.renderComments(this.commentArray);
+                this.renderInput();
+            }
+        })
+
+        this.main.yubtub.renderer.render(this.comments.htmlElement, this.comment);
+        this.main.yubtub.renderer.render(this.comment, this.textarea);
+    }
 }
 
 class Aside {
