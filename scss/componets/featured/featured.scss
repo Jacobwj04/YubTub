@@ -1,5 +1,4 @@
 .featured {
-    background: red;
     width: 30%;
     height: 100vh;
     padding: 2rem;
@@ -8,5 +7,27 @@
         object-fit: cover;
         width: 100%;
         height: 20rem;
+        transition: 0.4s all;
+
+        &:hover {
+            cursor: pointer;
+            padding: 1rem;
+            border: 0.2rem solid #5c16c5;
+        }
+    }
+}
+
+@media screen and (max-width: 62.5rem) {
+    .featured {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        height: 40vh;
+
+        &__video {
+            width: 40%;
+        }
     }
 }

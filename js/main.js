@@ -88,11 +88,17 @@ class Main {
 
         this.header = new Header();
         this.yubtub.renderer.render(document.querySelector("body"), this.header.htmlElement);
+        this.yubtub.renderer.render(this.header.htmlElement, this.header.text);
+
+        this.container = document.createElement("div");
+        this.container.classList = "yubtub";
+
+        this.yubtub.renderer.render(document.querySelector("body"), this.container);
 
         this.htmlElement = document.createElement("main");
         this.htmlElement.classList.add("main");
 
-        this.yubtub.renderer.render(document.querySelector("body"), this.htmlElement);
+        this.yubtub.renderer.render(document.querySelector("div"), this.htmlElement);
 
         this.videoSection = document.createElement("section");
         this.videoSection.classList.add("video");
@@ -121,7 +127,7 @@ class Main {
 
         this.title = document.createElement("h2");
         this.title.classList.add("video__title");
-        this.title.innerText = "hoi"
+        this.title.innerText = dataOnload.title;
 
         this.yubtub.renderer.render(this.infoboxFirst, this.title);
 
@@ -155,11 +161,9 @@ class Header {
         this.htmlElement = document.createElement("header");
         this.htmlElement.classList = "header";
 
-        this.icon = document.createElement("icon");
-        this.icon.classList = "header__icon";
-
         this.text = document.createElement("h1");
         this.text.classList = "header__text";
+        this.text.innerText = "Jacob";
     }
 }
 
@@ -261,7 +265,7 @@ class Aside {
         this.htmlElement = document.createElement("aside");
         this.htmlElement.classList.add("featured");
 
-        this.yubtub.renderer.render(document.querySelector("body"), this.htmlElement);
+        this.yubtub.renderer.render(document.querySelector("div"), this.htmlElement);
         this.nextVideo = new NextVideo(this, this.data);
     }
 }

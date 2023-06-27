@@ -1,6 +1,7 @@
 @use "./abstracts/base";
 @use "./abstracts/reset";
 
+@use "./componets/header/header.scss";
 @use "./componets/comments/comments.scss";
 @use "./componets/featured/featured.scss";
 @use "./componets/video/video.scss";

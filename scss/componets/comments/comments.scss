@@ -9,7 +9,7 @@
     &__comment{
         width: 100%;
         height: 7rem;
-        border: 0.2rem solid black;
+        border: 0.2rem solid #5c16c5;
         display: flex;
         align-items: center;
         gap: 2rem;
@@ -21,7 +21,7 @@
         width: 5rem;
         border-radius: 50%;
         background: white;
-        border: 0.2rem solid black;
+        border: 0.2rem solid #5c16c5;
     }
 
     &__text{
@@ -32,7 +32,7 @@
     &__commentInput{
         width: 100%;
         height: 7rem;
-        border: 0.2rem solid black;
+        border: 0.2rem solid #5c16c5;
         display: flex;
         align-items: center;
         padding: 1rem;
@@ -44,5 +44,12 @@
         width: 100%;
         height: 100%;
         resize: none;
+        border: none;
+    }
+}
+
+@media screen and (max-width: 62.5rem) {
+    .comments{
+        width: 100%;
     }
 }
